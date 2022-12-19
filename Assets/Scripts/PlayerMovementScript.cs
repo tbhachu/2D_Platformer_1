@@ -11,11 +11,13 @@ public class PlayerMovementScript : MonoBehaviour
     Vector2 moveInput;
     Rigidbody2D myRigidBody;
     Animator myAnimator;
+    CapsuleCollider2D myCapsuleCollider;
     
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        myCapsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
     void Update()
@@ -32,6 +34,11 @@ public class PlayerMovementScript : MonoBehaviour
 
     void OnJump(InputValue value)
     {
+        if(!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            return;
+        }
+
         if(value.isPressed)
         {
             Debug.Log("jump is working");
