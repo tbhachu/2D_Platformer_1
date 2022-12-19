@@ -7,6 +7,7 @@ public class PlayerMovementScript : MonoBehaviour
 {
     [SerializeField] float runSpeed = 10f;
     [SerializeField] float jumpSpeed = 5f;
+    [SerializeField] float climbSpeed = 5f;
 
     Vector2 moveInput;
     Rigidbody2D myRigidBody;
@@ -24,6 +25,7 @@ public class PlayerMovementScript : MonoBehaviour
     {
         Run();
         FlipSprite();
+        ClimbLadder();
     }
 
     void OnMove(InputValue value)
@@ -63,5 +65,16 @@ public class PlayerMovementScript : MonoBehaviour
         {
             transform.localScale = new Vector2 (Mathf.Sign(myRigidBody.velocity.x), 1f);
         }
+    }
+
+    void ClimbLadder()
+    {
+        if(!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        {
+            return;
+        }
+
+        Vector2 climbVelocity = new Vector2 (myRigidBody.velocity.x, moveInput.y * climbSpeed);
+        myRigidBody.velocity = climbVelocity;
     }
 }
