@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovementScript : MonoBehaviour
 {
     [SerializeField] float runSpeed = 10f;
+    [SerializeField] float jumpSpeed = 5f;
 
     Vector2 moveInput;
     Rigidbody2D myRigidBody;
@@ -27,6 +28,16 @@ public class PlayerMovementScript : MonoBehaviour
     {
         moveInput = value.Get<Vector2>();
         Debug.Log(moveInput);
+    }
+
+    void OnJump(InputValue value)
+    {
+        if(value.isPressed)
+        {
+            Debug.Log("jump is working");
+            // do stuff
+            myRigidBody.velocity += new Vector2 (0f, jumpSpeed);
+        }
     }
 
     void Run()
