@@ -14,6 +14,7 @@ public class PlayerMovementScript : MonoBehaviour
     Animator myAnimator;
     CapsuleCollider2D myCapsuleCollider;
     float gravityScaleAtStart;
+    bool isOnLadder = false;
     
     void Start()
     {
@@ -38,7 +39,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     void OnJump(InputValue value)
     {
-        if(!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || !myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if(!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             return;
         }
@@ -85,5 +86,39 @@ public class PlayerMovementScript : MonoBehaviour
 
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.y) > Mathf.Epsilon;
         myAnimator.SetBool("isClimbing", playerHasHorizontalSpeed);
+    }
+
+
+    // These 2 methods below PlayerClimb() and PlayerJump() are for enabling player to jump
+    // from the ladder, or hit jump from the bottom
+    private void PlayerClimb()
+    {
+        if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")) && Input.GetAxis("Vertical") != 0)
+        {
+            isOnLadder = true;
+            float controlThrow = Input.GetAxis("Vertical");
+            Vector2 climbVelocity = new Vector2(myRigidBody.velocity.x, (controlThrow * climbSpeed));
+            myRigidBody.velocity = climbVelocity;
+            myRigidBody.gravityScale = 0f;
+            bool playerHasVerticalSpeed = Mathf.Abs(myRigidBody.velocity.y) > Mathf.Epsilon;
+            myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
+        } else if (isOnLadder && myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        {
+            myRigidBody.gravityScale = 0f;
+        } else {
+            myAnimator.SetBool("isClimbing", false);
+            myRigidBody.gravityScale = gravityScaleAtStart;
+            return;
+        }
+    }
+
+    private void PlayerJump()
+    {
+        if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground", "Climbing")) && Input.GetButtonDown("Jump"))
+        {
+            isOnLadder= false;                                                                             // If player attempts to jump, they detach themselves from ladder.
+            Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
+            myRigidBody.velocity += jumpVelocityToAdd;
+        }
     }
 }
