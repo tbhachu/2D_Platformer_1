@@ -38,7 +38,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     void OnJump(InputValue value)
     {
-        if(!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if(!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || !myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             return;
         }
@@ -74,6 +74,7 @@ public class PlayerMovementScript : MonoBehaviour
         if(!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
             myRigidBody.gravityScale = gravityScaleAtStart;
+            myAnimator.SetBool("isClimbing", false);
             return;
         }
 
@@ -81,5 +82,8 @@ public class PlayerMovementScript : MonoBehaviour
         myRigidBody.velocity = climbVelocity;
 
         myRigidBody.gravityScale = 0f;
+
+        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.y) > Mathf.Epsilon;
+        myAnimator.SetBool("isClimbing", playerHasHorizontalSpeed);
     }
 }
