@@ -12,15 +12,17 @@ public class PlayerMovementScript : MonoBehaviour
     Vector2 moveInput;
     Rigidbody2D myRigidBody;
     Animator myAnimator;
-    CapsuleCollider2D myCapsuleCollider;
+    CapsuleCollider2D myBodyCollider;
+    BoxCollider2D myFeetCollider;
     float gravityScaleAtStart;
-    bool isOnLadder = false;
+
     
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        myCapsuleCollider = GetComponent<CapsuleCollider2D>();
+        myBodyCollider = GetComponent<CapsuleCollider2D>();
+        myFeetCollider = GetComponent<BoxCollider2D>();
         gravityScaleAtStart = myRigidBody.gravityScale;
     }
 
@@ -39,7 +41,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     void OnJump(InputValue value)
     {
-        if(!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if(!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             return;
         }
@@ -72,7 +74,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     void ClimbLadder()
     {
-        if(!myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        if(!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
             myRigidBody.gravityScale = gravityScaleAtStart;
             myAnimator.SetBool("isClimbing", false);
@@ -88,37 +90,4 @@ public class PlayerMovementScript : MonoBehaviour
         myAnimator.SetBool("isClimbing", playerHasHorizontalSpeed);
     }
 
-
-    // These 2 methods below PlayerClimb() and PlayerJump() are for enabling player to jump
-    // from the ladder, or hit jump from the bottom
-    private void PlayerClimb()
-    {
-        if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")) && Input.GetAxis("Vertical") != 0)
-        {
-            isOnLadder = true;
-            float controlThrow = Input.GetAxis("Vertical");
-            Vector2 climbVelocity = new Vector2(myRigidBody.velocity.x, (controlThrow * climbSpeed));
-            myRigidBody.velocity = climbVelocity;
-            myRigidBody.gravityScale = 0f;
-            bool playerHasVerticalSpeed = Mathf.Abs(myRigidBody.velocity.y) > Mathf.Epsilon;
-            myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
-        } else if (isOnLadder && myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
-        {
-            myRigidBody.gravityScale = 0f;
-        } else {
-            myAnimator.SetBool("isClimbing", false);
-            myRigidBody.gravityScale = gravityScaleAtStart;
-            return;
-        }
-    }
-
-    private void PlayerJump()
-    {
-        if (myCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground", "Climbing")) && Input.GetButtonDown("Jump"))
-        {
-            isOnLadder= false;                                                                             // If player attempts to jump, they detach themselves from ladder.
-            Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
-            myRigidBody.velocity += jumpVelocityToAdd;
-        }
-    }
 }
