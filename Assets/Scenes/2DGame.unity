@@ -312,7 +312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264924782}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5924168, y: -9.194302, z: -9.601525}
+  m_LocalPosition: {x: -2.5924163, y: -9.194302, z: -9.601525}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -661,7 +661,7 @@ TilemapRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -5407,7 +5407,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917406410}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5924163, y: -9.194302, z: -9.601525}
+  m_LocalPosition: {x: -2.5924168, y: -9.194302, z: -9.601525}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6031,7 +6031,7 @@ TilemapRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -6253,7 +6253,9 @@ GameObject:
   - component: {fileID: 2014454264}
   - component: {fileID: 2014454263}
   - component: {fileID: 2014454262}
-  m_Layer: 0
+  - component: {fileID: 2014454267}
+  - component: {fileID: 2014454268}
+  m_Layer: 11
   m_Name: Enemy_Blob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6293,8 +6295,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.033037186, y: -0.11}
-  m_Size: {x: 0.81378555, y: 0.8498273}
+  m_Offset: {x: 0.035773516, y: -0.13577026}
+  m_Size: {x: 0.7535882, y: 0.7744988}
   m_Direction: 0
 --- !u!50 &2014454264
 Rigidbody2D:
@@ -6384,6 +6386,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2014454267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014454261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c078e963c164b974790c6f4fc82e3648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+--- !u!61 &2014454268
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014454261}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.39991188, y: -0.22438759}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0.09375, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.042790413, y: 0.82750165}
+  m_EdgeRadius: 0
 --- !u!1 &2041042850
 GameObject:
   m_ObjectHideFlags: 0
@@ -6460,7 +6501,7 @@ TilemapRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -18569,7 +18610,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120669556}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.6247697, y: 5.76492, z: -10}
+  m_LocalPosition: {x: -7.6247225, y: 5.7589126, z: -10}
   m_LocalScale: {x: 8.171055, y: 8.171055, z: 8.171055}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -18621,6 +18662,14 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: ce4d48fcdd48eeb4e99b9dd0832ab250, type: 2}
+    - target: {fileID: 3876641152766003058, guid: b60166d2f8504e049a9d6cf8d5e8b6c4, type: 3}
+      propertyPath: deathKick.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3876641152766003058, guid: b60166d2f8504e049a9d6cf8d5e8b6c4, type: 3}
+      propertyPath: deathKick.y
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 9043153306909238353, guid: b60166d2f8504e049a9d6cf8d5e8b6c4, type: 3}
       propertyPath: m_Name
       value: Player_1
