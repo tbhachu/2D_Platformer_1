@@ -42,7 +42,7 @@ public class PlayerMovementScript : MonoBehaviour
         Die();
     }
 
-    void onFire(InputValue value) 
+    void OnFire(InputValue value) 
     {
         if(!isAlive) {
             return;
