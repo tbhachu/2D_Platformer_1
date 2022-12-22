@@ -7359,7 +7359,7 @@ Transform:
   - {fileID: 415462696}
   - {fileID: 2143527848}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1244349181
 PrefabInstance:
@@ -7475,6 +7475,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fa47a1c273b6e245b8d8475e98d6a70, type: 3}
+--- !u!1001 &1880691066
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6112221689868494225, guid: 197f2a4d938487d4d973841e65200708, type: 3}
+      propertyPath: m_Name
+      value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112221689868494227, guid: 197f2a4d938487d4d973841e65200708, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112221689868494227, guid: 197f2a4d938487d4d973841e65200708, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.96755
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112221689868494227, guid: 197f2a4d938487d4d973841e65200708, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.6748667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112221689868494227, guid: 197f2a4d938487d4d973841e65200708, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112221689868494227, guid: 197f2a4d938487d4d973841e65200708, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112221689868494227, guid: 197f2a4d938487d4d973841e65200708, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112221689868494227, guid: 197f2a4d938487d4d973841e65200708, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112221689868494227, guid: 197f2a4d938487d4d973841e65200708, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112221689868494227, guid: 197f2a4d938487d4d973841e65200708, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112221689868494227, guid: 197f2a4d938487d4d973841e65200708, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112221689868494227, guid: 197f2a4d938487d4d973841e65200708, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 197f2a4d938487d4d973841e65200708, type: 3}
 --- !u!1 &1983025424
 GameObject:
   m_ObjectHideFlags: 0
@@ -19721,10 +19778,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.65556514, y: 23.600624}
-      - {x: -19.509354, y: 22.988668}
+    - - {x: -0.9633397, y: 23.820463}
+      - {x: -19.752989, y: 23.789183}
       - {x: -19.17437, y: -0.3664074}
-      - {x: 21.070902, y: -0.055986404}
+      - {x: 21.705214, y: -0.58457947}
       - {x: 21.405878, y: 23.40256}
 --- !u!95 &2051153919 stripped
 Animator:
@@ -19912,15 +19969,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4447160729280351622, guid: 1c557473716a5b648bb1624c6d1b98c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.517671
+      value: -12.121875
       objectReference: {fileID: 0}
     - target: {fileID: 4447160729280351622, guid: 1c557473716a5b648bb1624c6d1b98c9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.995388
+      value: 16.789757
       objectReference: {fileID: 0}
     - target: {fileID: 4447160729280351623, guid: 1c557473716a5b648bb1624c6d1b98c9, type: 3}
       propertyPath: orthographic size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4447160730001989044, guid: 1c557473716a5b648bb1624c6d1b98c9, type: 3}
       propertyPath: m_BoundingShape2D
