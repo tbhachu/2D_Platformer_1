@@ -9,28 +9,38 @@ public class Game_Session : MonoBehaviour
     
     void Awake()
     {
-        int numGameSessions = FindObjectsOfType<GameSession>().Length;
-        
+        int numGameSessions = FindObjectsOfType<Game_Session>().Length;
+
         if (numGameSessions > 1) {
             Destroy(gameObject);
         }
         else {
                 DontDestroyOnLoad(gameObject);
             }
-        }
     }
 
     public void ProcessPlayerDeath()
     {
-        if (playerLives > 1){
+        if (playerLives > 1)
+        {
             TakeLife();
-        } else {
+        } 
+        else 
+        {
             ResetGameSession();
         }
     }
 
-    private void ResetGameSession()
+    void TakeLife()
     {
+        playerLives--;
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    void ResetGameSession()
+    {
+        Debug.Log("Game session has restarted.");
         SceneManager.LoadScene(0);
     }
 }

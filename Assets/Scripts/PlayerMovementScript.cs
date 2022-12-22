@@ -21,7 +21,6 @@ public class PlayerMovementScript : MonoBehaviour
 
     bool isAlive = true;
 
-    
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -121,6 +120,7 @@ public class PlayerMovementScript : MonoBehaviour
             isAlive = false;
             myAnimator.SetTrigger("Dying");
             myRigidBody.velocity = deathKick;
+            FindObjectOfType<Game_Session>().ProcessPlayerDeath();
         }
     }
 
