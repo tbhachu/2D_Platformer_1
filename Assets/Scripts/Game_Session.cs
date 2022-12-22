@@ -10,13 +10,11 @@ public class Game_Session : MonoBehaviour
     void Awake()
     {
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
-        if (numGameSessions > 1)
-        {
+        
+        if (numGameSessions > 1) {
             Destroy(gameObject);
         }
-        else
-        {
-            {
+        else {
                 DontDestroyOnLoad(gameObject);
             }
         }
@@ -33,6 +31,6 @@ public class Game_Session : MonoBehaviour
 
     private void ResetGameSession()
     {
-        SceneManager
+        SceneManager.LoadScene(0);
     }
 }
