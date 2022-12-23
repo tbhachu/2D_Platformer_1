@@ -21,10 +21,13 @@ public class Level_Exit : MonoBehaviour
         yield return new WaitForSecondsRealtime(levelLoadDelay);
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
+
         if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)
         {
             nextSceneIndex = 0;
         }
+
+        FindObjectOfType<Scene_Persist>().ResetScenePersist();
         SceneManager.LoadScene(nextSceneIndex);
     }
 

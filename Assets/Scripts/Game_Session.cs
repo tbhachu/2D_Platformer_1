@@ -59,6 +59,8 @@ public class Game_Session : MonoBehaviour
     void ResetGameSession()
     {
         Debug.Log("Game session has restarted.");
+        FindObjectOfType<Scene_Persist>().ResetScenePersist();
         SceneManager.LoadScene(0);
+        Destroy(gameObject);
     }
 }
